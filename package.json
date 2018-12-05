@@ -4,7 +4,7 @@
   "description": "Simple organic-oval application",
   "private": true,
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
+    "build": "./node_modules/.bin/webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
