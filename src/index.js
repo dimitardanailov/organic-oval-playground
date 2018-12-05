@@ -1,11 +1,4 @@
-import _ from 'lodash';
-
-function component() {
-  let element = document.createElement('div');
-
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
-}
-
-document.body.appendChild(component());
+var oval = require('organic-oval')
+oval.init()
+require('./index.tag')
+oval.mountAll(document.body)
