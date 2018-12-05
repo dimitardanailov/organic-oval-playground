@@ -1,0 +1,26 @@
+{
+  "name": "oval-playground",
+  "version": "1.0.0",
+  "description": "Simple organic-oval application",
+  "private": true,
+  "scripts": {
+    "build": "./node_modules/.bin/webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "organic-oval"
+  ],
+  "author": "Dimitar Danailov <dimityr.danailov@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "lodash": "^4.17.11",
+    "organic-oval": "^4.3.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.27.0",
+    "webpack-cli": "^3.1.2"
+  }
+}
