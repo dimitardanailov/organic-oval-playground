@@ -1,4 +1,7 @@
-var oval = require('organic-oval')
+import oval from 'organic-oval'
+require('./word-count')
+require('./my-paragraph')
+
 oval.init()
 
 class Component {
@@ -7,15 +10,25 @@ class Component {
   }
 
   render (createElement) {
-    return createElement(
-      'h1',
-      {
-				style: 'color: green; text-align: center'
-			},
-      'Hello Organic World!'
+    return (
+      <div>
+        <h1 style="color: green; text-align: center">
+          Hello Organic World!!!
+        </h1>
+
+        <article>
+          <p>
+            Oval can be used in many ways. There are different setups for each way.
+          </p>
+
+          <word-count></word-count>
+        </article>
+
+        <my-paragraph />        
+      </div>
     )
   }
 }
 
-oval.registerTag('app', Component)
+oval.registerTag('App', Component)
 oval.mountAll(document.body)
