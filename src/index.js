@@ -1,12 +1,14 @@
 import oval from 'organic-oval'
 require('./word-count')
 require('./my-paragraph')
+require('./fancy-button')
+require('./oval-button')
 
 oval.init()
 
 class Component {
-  constructor (tagName, root) {
-    oval.BaseTag(this, tagName, root)
+  constructor (rootEl, props, attrs) {
+    oval.BaseTag(this, rootEl, props, attrs)
   }
 
   render (createElement) {
@@ -24,7 +26,13 @@ class Component {
           <word-count></word-count>
         </article>
 
-        <my-paragraph />        
+        <my-paragraph />     
+
+        <section>
+          <fancy-button>I'm a fancy button</fancy-button>
+        </section>
+
+        <oval-button prop-isToggleOn={false} />
       </div>
     )
   }
