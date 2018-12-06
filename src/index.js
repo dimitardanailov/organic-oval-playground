@@ -4,6 +4,9 @@ require('./my-paragraph')
 require('./fancy-button')
 require('./oval-button')
 
+// d3js
+require('./d3/bar-chart-wrapper')
+
 oval.init()
 
 class Component {
@@ -33,6 +36,8 @@ class Component {
         </section>
 
         <oval-button prop-isToggleOn={false} />
+
+        <d3-bar-chart-wrapper />
       </div>
     )
   }
