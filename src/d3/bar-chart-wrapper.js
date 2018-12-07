@@ -23,7 +23,10 @@ class BarChartWrapper {
 					)}
 				</select>
 
-				<d3-bar-chart prop-selectedValue={ this.props.selectedValue } />
+				<d3-bar-chart 
+					prop-width="500"
+					prop-height="500"
+					prop-selectedValue={ this.props.selectedValue } />
 			</section>
 		)
 	}

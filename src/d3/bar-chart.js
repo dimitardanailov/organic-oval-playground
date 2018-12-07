@@ -1,4 +1,9 @@
+/**
+ * Idea: https://beta.observablehq.com/@mbostock/d3-sortable-bar-chart
+ */
+
 import oval from 'organic-oval'
+import barChart from './pluggins/bar-chart'
 
 oval.init()
 
@@ -6,15 +11,25 @@ class BarChart {
 	constructor (rootEl, props, attrs) {
 		oval.BaseTag(this, rootEl, props, attrs)
 
-		this.props.data = BarChart.data()
-		console.log(this.props.data)
+		this.on('mounted', () => {
+			this.loadD3()
+		})
+	}
+
+	loadD3() {
+		const dimensions = {
+			height: this.props.height,
+			width: this.props.width
+		}
+
+		const data = BarChart.data()
+
+		barChart(this.refs.section, data, dimensions, BarChart.getMarginValues())
 	}
 
 	render (createElement) { 
 		return (
-			<section>
-				D3
-			</section>
+			<section ref='section' />
 		)
 	}
 
@@ -47,6 +62,15 @@ class BarChart {
 			{ name: "Y", value: 0.01974 },
 			{ name: "Z", value: 0.00074 }
 		]
+	}
+
+	static getMarginValues() {
+		return { 
+			top: 20, 
+			right: 0, 
+			bottom: 30, 
+			left: 40
+		}
 	}
 }
 
