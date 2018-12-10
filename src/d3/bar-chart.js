@@ -4,6 +4,7 @@
 
 import oval from 'organic-oval'
 import barChart from './pluggins/bar-chart'
+import store from './redux/store'
 
 oval.init()
 
@@ -12,8 +13,14 @@ class BarChart {
 		oval.BaseTag(this, rootEl, props, attrs)
 
 		this.on('mounted', () => {
-			this.loadD3()
+			this.componentDidMount()
 		})
+	}
+
+	componentDidMount() {
+		this.loadD3()
+
+		const unsubscribe = store.subscribe(() => console.log(store.getState()))
 	}
 
 	loadD3() {
@@ -23,7 +30,6 @@ class BarChart {
 		}
 
 		const data = BarChart.data()
-
 		barChart(this.refs.section, data, dimensions, BarChart.getMarginValues())
 	}
 

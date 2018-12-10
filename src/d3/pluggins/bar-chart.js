@@ -6,13 +6,15 @@ let global = {
 	data: null
 }
 
+let x, y
+
 const barChart = function(el, data, dimensions, margin) {
 	global.margin = margin
 	global.dimensions = dimensions
 	global.data = data
 
-	const x = scaleBand()
-	const y = scaleLinear()
+	x = scaleBand()
+	y = scaleLinear()
 
 	const svg = d3.select(el)
 		.append('svg')
