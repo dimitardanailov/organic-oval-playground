@@ -3,7 +3,7 @@
  */
 
 import oval from 'organic-oval'
-import barChart from './pluggins/bar-chart'
+import { barChart, order } from './pluggins/bar-chart'
 import store from './redux/store'
 
 oval.init()
@@ -20,7 +20,15 @@ class BarChart {
 	componentDidMount() {
 		this.loadD3()
 
-		const unsubscribe = store.subscribe(() => console.log(store.getState()))
+		const unsubscribe = store.subscribe(() => { 
+			order(store.getState())
+		})
+
+		this.on('unmounted', () => {
+			console.log('bar char was unmounted')
+			// Stop listening to state updates
+			unsubscribe()
+		})
 	}
 
 	loadD3() {

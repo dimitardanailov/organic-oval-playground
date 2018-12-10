@@ -16,20 +16,9 @@ class BarChartWrapper {
 		})
 	}
 
-	addOnChangeListener() {
-		const values = Object.values(ORDER_VALUES)
-		const keys = Object.keys(ORDER_VALUES)
-		
+	addOnChangeListener() {		
 		this.refs.select.addEventListener('change', e => {
-			let index = null	
-			for (let i = 0; i < values.length; i++) {
-				if (values[i] === e.target.value) {
-					index = i
-				}
-			}
-			
-			let state = keys[index]
-			store.dispatch(setOrderValue(state))
+			store.dispatch(setOrderValue(e.target.value))
 		})
 	}
 
