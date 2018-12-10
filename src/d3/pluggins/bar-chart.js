@@ -11,14 +11,8 @@ const barChart = function(el, data, dimensions, margin) {
 	global.dimensions = dimensions
 	global.data = data
 
-	const x = d3.scaleBand()
-    .domain(data.map(d => d.name))
-    .range([margin.left, dimensions.width - margin.right])
-		.padding(0.1)
-
-	const y = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.value)]).nice()
-    .range([dimensions.height - margin.bottom, margin.top])
+	const x = scaleBand()
+	const y = scaleLinear()
 
 	const svg = d3.select(el)
 		.append('svg')
@@ -37,28 +31,38 @@ const barChart = function(el, data, dimensions, margin) {
 			.attr('width', x.bandwidth())	
 
 	const gx = svg.append('g')
-			.call(xAxis);
+			.call(xAxis)
 
-	gx.call(d3.axisBottom(x).tickSizeOuter(0))
-			
 	const gy = svg.append('g')
 			.call(yAxis)
-
-	gy
-		.call(d3.axisLeft(y))
-		.call(g => g.select(".domain").remove())
 }
 
 const xAxis = function(g) {
 	const axis = g.attr('transform', `translate(0,${global.dimensions.height - global.margin.bottom})`)
+		.call(d3.axisBottom(scaleBand()).tickSizeOuter(0))
 
 	return axis
 }
 
 const yAxis = function(g) {
 	const axis = g.attr('transform', `translate(${global.margin.left},0)`)
-
+		.call(d3.axisLeft(scaleLinear()))
+		.call(g => g.select('.domain').remove())
+		
 	return axis
+}
+
+const scaleBand = function() {
+	return d3.scaleBand()
+		.domain(global.data.map(d => d.name))
+		.range([global.margin.left, global.dimensions.width - global.margin.right])
+		.padding(0.1)
+}
+
+const scaleLinear = function() {
+	return d3.scaleLinear()
+    .domain([0, d3.max(global.data, d => d.value)]).nice()
+    .range([global.dimensions.height - global.margin.bottom, global.margin.top])
 }
 
 export default barChart
