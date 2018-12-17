@@ -32,7 +32,7 @@ class Component {
         <my-paragraph />     
 
         <section>
-          <fancy-button>I'm a fancy button</fancy-button>
+          <button is="fancy-button" disabled>Fancy button!</button>
         </section>
 
         <oval-button prop-isToggleOn={false} />

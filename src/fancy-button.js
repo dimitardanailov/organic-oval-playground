@@ -1,4 +1,4 @@
-class FancyButton extends HTMLButtonElement {
+export class FancyButton extends HTMLButtonElement {
   constructor() {
     super(); // always call super() first in the constructor.
     this.addEventListener('click', () => this.drawRipple());
@@ -12,4 +12,4 @@ class FancyButton extends HTMLButtonElement {
   }
 }
 
-customElements.define('fancy-button', FancyButton, {extends: 'button'});
+customElements.define('fancy-button', FancyButton, { extends: 'button' });
